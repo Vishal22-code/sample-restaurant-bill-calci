@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Foodie's Spot Bill Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fdfdfd;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+    .menu-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+    .item-details {
+      flex-grow: 1;
+    }
+    .item-details span {
+      display: block;
+      font-size: 14px;
+    }
+    .item-details strong {
+      font-size: 16px;
+    }
+    .menu-item input {
+      width: 60px;
+      padding: 5px;
+      text-align: center;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b7ff;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    #total {
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Foodie's Spot Bill Calculator</h2>
+
+  <div class="menu-item">
+    <img src="https://i.postimg.cc/t7RYNtcG/fried-chicken-png.png" alt="Fried Chicken">
+    <div class="item-details">
+      <strong>Fried Chicken</strong>
+      <span>₹3200</span>
+    </div>
+    <input type="number" id="friedChicken" min="0" value="0">
+  </div>
+
+  <div class="menu-item">
+    <img src="https://i.postimg.cc/MfGHZqBp/hyderabad-chicken-briyani-png.png" alt="Hyderabad Biryani">
+    <div class="item-details">
+      <strong>Hyderabad Biryani</strong>
+      <span>₹3350</span>
+    </div>
+    <input type="number" id="hyderabadBiryani" min="0" value="0">
+  </div>
+
+  <div class="menu-item">
+    <img src="https://i.postimg.cc/MXsXPfkM/rose-milk-png-1.png" alt="Rose Milk">
+    <div class="item-details">
+      <strong>Rose Milk</strong>
+      <span>₹2950</span>
+    </div>
+    <input type="number" id="roseMilk" min="0" value="0">
+  </div>
+
+  <div class="menu-item">
+    <img src="https://i.postimg.cc/Vrm5TjLM/chocolate-milkshake.png" alt="Chocolate Milkshake">
+    <div class="item-details">
+      <strong>Chocolate Milkshake</strong>
+      <span>₹2900</span>
+    </div>
+    <input type="number" id="chocolateMilkshake" min="0" value="0">
+  </div>
+
+  <button onclick="calculateTotal()">Calculate Total</button>
+  <div id="total">Total Amount: ₹0</div>
+
+  <script>
+    function calculateTotal() {
+      const prices = {
+        friedChicken: 3200,
+        hyderabadBiryani: 3350,
+        roseMilk: 2950,
+        chocolateMilkshake: 2900
+      };
+
+      let total = 0;
+      for (let item in prices) {
+        let qty = parseInt(document.getElementById(item).value) || 0;
+        total += qty * prices[item];
+      }
+
+      document.getElementById("total").innerText = `Total Amount: ₹${total}`;
+    }
+  </script>
+
+</body>
+</html>
