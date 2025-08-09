@@ -9,7 +9,7 @@
       max-width: 600px;
       margin: 40px auto;
       padding: 20px;
-      background: #fdfdfd;
+      background: #025EE8;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
@@ -68,14 +68,6 @@
       font-weight: bold;
       text-align: center;
       margin-top: 20px;
-    }
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #555;
-      margin-top: 30px;
-      padding: 10px;
-      opacity: 0.7;
     }
   </style>
 </head>
@@ -144,8 +136,9 @@
 
     function copyTotal() {
       let totalText = document.getElementById("total").innerText;
-      navigator.clipboard.writeText(totalText).then(() => {
-        alert("Copied : " + totalText);
+      let totalValue = totalText.replace(/[^\d]/g, ""); // Keep only digits
+      navigator.clipboard.writeText(totalValue).then(() => {
+        alert("Copied amount: ₹" + totalValue);
       }).catch(err => {
         alert("Failed to copy: " + err);
       });
@@ -154,3 +147,4 @@
 
 </body>
 </html>
+
